@@ -52,10 +52,20 @@ $(function(){
 
   $.each(emojis, populateKeyboard);
 
+
 function populateKeyboard(i, emojis){
-  return $('.keyboard').prepend("<li class='emojis-icon'>"+emojis.value+"</li>");
+  $('.keyboard').prepend("<li class='emojis-icon'>"+emojis.value+"</li>");
+  populateScreen();
 }
-})
+
+
+function populateScreen(){
+  console.log("working");
+  var randomObj = emojis[Math.floor(Math.random()*emojis.length)]
+  return $('.game-screen').html(randomObj.value);
+};
+});
+
 
 
 
