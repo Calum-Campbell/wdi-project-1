@@ -1,0 +1,26 @@
+h1 {
+  color:black;
+  text-align: center;
+  height: 100px;
+  font-family: 'Days One', sans-serif;
+}
+
+ul {
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+  overflow: hidden; /* Because we used float left, good practice to clear outside container so it doesnt affect it */
+  border: 1px solid #000; /* Make all the borders same, the middle ones were doubles up*/
+}
+
+li {
+  width: 98px; /* make 98 to compensate for the added border of 1px on each li*/
+  height: 98px;
+  background: white;
+  float: right;
+  border: 1px solid #F9A825;
+  text-align: center;
+  line-height: 98px;
+  font-size: 23px;
+  color: black;
+}
