@@ -8,10 +8,12 @@
 
 
 //NEED TO DO -
-// not have to repeat the emojis array to create a new array
-// Get clicked screen element to return its value
-// input this value into an array
-// Make the background of the keyboard = to the emojis.src value
+//choose 50 good emojis
+// make clicked emoji flash not stay on
+// make start button
+//set up a display that fill in a bar of emojis possibly
+// make some sort of game over screen or something
+
 
 $(function(){
 
@@ -135,28 +137,31 @@ function clearScreen(){
 //make array of user choices
 function userChoice(element){
   event.preventDefault();
-  // console.log(emojis[(element.toElement.id)-1])
+
   var picLink = (emojis[(element.toElement.id)-1].src)
-  // $('.game-screen').css("background-image", "url("+picLink+")");
 
   if (playerArray.length !== gameArray.length){
     playerArray.push(parseInt(element.toElement.id));
+
     $('.game-screen').css("background-image", "url("+picLink+")");
-    console.log(playerArray);
-    console.log(gameArray);
-  }else{
+    // $('.game-screen').css("background-image", "none")
+    console.log('player length is :'+playerArray.length);
+    console.log('game length is :'+gameArray.length);
+  }else if (playerArray.length === gameArray.length){
     checkMatch();
   }
 }
 
 function checkMatch(){
+  var playerArrayString = playerArray.toString();
+  var gameArrayString = gameArray.toString();
   for (var i = 0; i < playerArray.length; i++) {
-    if (playerArray[i] === gameArray[i]){
-      
+    if (playerArrayString === gameArrayString){
+
       roundNumber++;
       gameArray =[];
       playerArray=[];
-      console.log("next match");
+      console.log("This is a match");
       populateScreen();
 
     }else{
@@ -167,6 +172,25 @@ function checkMatch(){
     }
   };
 }
+
+// function checkMatch(){
+//   for (var i = 0; i < playerArray.length; i++) {
+//     if (playerArray[i] === gameArray[i]){
+
+//       roundNumber++;
+//       gameArray =[];
+//       playerArray=[];
+//       console.log("next match");
+//       populateScreen();
+
+//     }else{
+//       console.log("not match")
+//       roundNumber =0;
+//       gameArray =[];
+//       playerArray=[];
+//     }
+//   };
+// }
 
 });
 

@@ -35,3 +35,7 @@ li {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+li:hover {
+  border: 1px solid black;
+}
