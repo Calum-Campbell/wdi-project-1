@@ -29,7 +29,9 @@ li {
   width: 500px;
   height: 300px;
   overflow: hidden; /* Because we used float left, good practice to clear outside container so it doesnt affect it */
-  border: 1px solid #000; /* Make all the borders same, the middle ones were doubles up*/
+  border: 1px solid white; /* Make all the borders same, the middle ones were doubles up*/
   text-align: center;
   font-size: 90px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
