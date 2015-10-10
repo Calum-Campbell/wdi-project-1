@@ -21,7 +21,7 @@ li {
   border: 1px solid #F9A825;
   text-align: center;
   line-height: 98px;
-  font-size: 23px;
+  font-size: 50px;
   color: black;
 }
 
@@ -32,5 +32,5 @@ li {
   overflow: hidden; /* Because we used float left, good practice to clear outside container so it doesnt affect it */
   border: 1px solid #000; /* Make all the borders same, the middle ones were doubles up*/
   text-align: center;
-  font-size: 160px;
+  font-size: 90px;
 }
