@@ -1,21 +1,41 @@
+@font-face {
+  font-family: manga;
+  src: url(../fonts/manga-temple/mangat.ttf);
+}
+
+body {
+  font-family: manga;
+  text-align: center;
+}
+
+.container {
+  margin: 20px;
+}
+
 h1 {
   color:black;
   text-align: center;
-  height: 100px;
-  font-family: 'Days One', sans-serif;
+  height: 50px;
+  font-family: manga;
+  font-size: 45px;
 }
 
 ul.keyboard {
   margin: 0 auto;
   width: 330px;
-  height: 180px;
+  height: 235px;
   background-color: white;
   overflow: hidden; /* Because we used float left, good practice to clear outside container so it doesnt affect it */
   border: 1px solid white; /* Make all the borders same, the middle ones were doubles up*/
 }
 
+ol#start-button {
+  background: red;
+  color: black;
+}
+
 li {
-  width: 44px; /* make 98 to compensate for the added border of 1px on each li*/
+  width: 44px; 
   height: 44px;
   float: right;
   border: 1px solid white;
@@ -24,6 +44,29 @@ li {
   font-size: 8px;
   color: white; 
   background-size: 44px 44px;
+  background-repeat: no-repeat;
+}
+
+li#start-button {
+  background-image: url(../emojis/go.png);
+  color: black;
+  font-size: 10px;
+}
+
+li#rules-button {
+  background-image: url(../emojis/rules.png);
+  color: black;
+  font-size: 10px;
+}
+
+li#difficulty-button {
+  background-image: url(../emojis/difficulty.png);
+  color: black;
+  font-size: 10px;
+}
+li.blank-button {
+  background: white;
+  color: black;
 }
 
 .game-screen {
@@ -33,7 +76,7 @@ li {
   overflow: hidden; /* Because we used float left, good practice to clear outside container so it doesnt affect it */
   border: 1px solid white; /* Make all the borders same, the middle ones were doubles up*/
   text-align: center;
-  font-size: 90px;
+  font-size: 20px;
   background-color: white;
   background-repeat: no-repeat;
   background-position: center;
@@ -55,5 +98,5 @@ ol.player-selection-bar {
 }
 
 li:hover {
-  border: 1px solid black;
+  opacity: 0.4;
 }

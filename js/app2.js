@@ -1,10 +1,8 @@
 
 //NEED TO DO -
-// back to start/replay button
 // Check array as we go
 // Include other difficulties
 // Stop being able to press buttons once computer sequence is coming up
-// fade in/out of images
 
 
 $(function(){
@@ -55,6 +53,7 @@ $(function(){
 
 
   $('ol.keyboard').on("click", userChoice)
+  // generatePlayerArray();
   $('li#start-button').on('click',generatePlayerArray)
   $('li#rules-button').on('click', displayRules)
 
@@ -72,14 +71,23 @@ function displayRules(){
 
 function generatePlayerArray(){
   clearScreen();
-  $('li#start-button').toggle();
-  $('li#rules-button').toggle();
-  $('li#difficulty-button').toggle();
-  $('li.blank-button').toggle();
+  $('li#start-button').remove();
+  $('li#rules-button').remove();
+  $('li#difficulty-button').remove();
+  $('li.blank-button').remove();
 
   var nextEmoji = emojis[Math.floor(Math.random()*emojis.length)];
   gameArrayObjects.push(nextEmoji);
   gameArray.push(parseInt(nextEmoji.value));
+
+  var nextNextEmoji = emojis[Math.floor(Math.random()*emojis.length)];
+  gameArrayObjects.push(nextNextEmoji);
+  gameArray.push(parseInt(nextNextEmoji.value));
+
+  var nextNextNextEmoji = emojis[Math.floor(Math.random()*emojis.length)];
+  gameArrayObjects.push(nextNextNextEmoji);
+  gameArray.push(parseInt(nextNextNextEmoji.value));
+  
   populateScreen();
 }
 
@@ -114,10 +122,6 @@ function clearScreen(){
 }
 
 function gameOverScreen(){
-  $('li#start-button').toggle();
-  $('li#rules-button').toggle();
-  $('li#difficulty-button').toggle();
-  $('li.blank-button').toggle();
   $('.game-screen').css("background-image", "none");
   $('.game-screen').html("Game Over, your score is: " + score+ "!");
 
