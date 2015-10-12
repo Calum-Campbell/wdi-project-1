@@ -9,31 +9,35 @@
   <script src="./js/app.js"></script>
 </head>
 <body>
+<!-- <ul class="player-selection-bar">
+  <ol class='initial-buttons'>
+    <li id='start-button' value="go">GO</li>
+  </ol>
+</ul> -->
   <main class="container">
     <h1>ME EMOJI!</h1>
-    <ul class="player-selection-bar">
-      <ol class='initial-buttons'>
-        <li class='blank-button'></li>
-        <li class='blank-button'></li>
-        <li id='difficulty-button'>difficulty</li>
-        <li id='rules-button'>Rules</li>
-        <li id='start-button' value="go">GO</li>
-        <li class='blank-button'></li>
-        <li class='blank-button'></li>
-      </ol>
-      <ol class="player-selection-bar">
-      </ol>
-    </ul>
-    <div class="lhs"></div>
-    <div class="game-screen" ></div>
+    <div class="outer-screen">
+      <ol class="player-selection-bar"></ol>
+      <div class="game-screen">
+        <ol class='rules'>
+          <li>Press play to begin</li>
+          <li>Remember the order of the emojis</li>
+          <li>Get the new high score!</li>
+        </ol>
+        <div class="play" id='start-button'>Play</div>
+      </div>
+    </div>
     <ul class="keyboard">
-      <ol class = "keyboard">
+      <ol class="keyboard">
         <li></li>
       </ol>
     </ul>
-    <div class="rhs"></div>
   </main>
-  <footer>&copy; SpacebarPassword</footer>
+  <footer>
+    <ul>
+      <li id="rules-button">Rules</li>
+    </ul>
+  </footer>
 </body>
 </html>
 
