@@ -10,6 +10,7 @@ $(gameStart);
 function gameStart(){
   clear();
   $.each(emojis, populateKeyboard);
+  finished = false;
 
   $('ol.keyboard').on("click", userChoice);
   $('#start-button').on('click', generatePlayerArray);
