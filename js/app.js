@@ -123,7 +123,7 @@ function populateScreen(){
 
 function clearScreenToGuess(){
   $('.game-screen').css("background-image", "none");
-  $('.game-screen').html("Now You Guess!").hide().fadeIn();
+  $('.game-screen').html("Now You Guess").hide().fadeIn();
 }
 
 function clearScreen(){
@@ -133,6 +133,7 @@ function clearScreen(){
 }
 
 function gameOverScreen(){
+  finished = false;
   $('.game-screen').html( "<ol class='game-over'>"+"<li id='replay-button'>Replay</li>"+"<liid='score'>Score: "+score+"</li></ol>");
   score = 0;
 }
