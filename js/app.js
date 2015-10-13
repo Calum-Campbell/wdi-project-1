@@ -1,3 +1,6 @@
+//Prep - psuedo code, order of build etc why did game
+//technical demonstration
+
 
 //NEED TO DO -
 // back to start/replay button
@@ -41,38 +44,41 @@ var emojis = [
 {name: "twentyfive", value:34, src:"./emojis/34.png"},
 {name: "twentyfive", value:35, src:"./emojis/35.png"}];
 
-$(function(){
-  gameStart();
-  function gameStart(){
+var playerArray,
+    gameArray,
+    roundNumber,
+    score,
+    gameArrayObjects,
+    finished;
 
-    var playerArray = []; 
-    var gameArray   = []; 
-    var roundNumber = 1;   
-    var score       = 0;
-    var gameArrayObjects = [];       
-    var finished = true;    
+$(gameStart);
+  
+function gameStart(){
+  clear();
+  // populate the keyboard with the emoji array
+  $.each(emojis, populateKeyboard);
 
-    setupScreen();
-    $('ol.keyboard').on("click", userChoice);
-    $('#start-button').on('click', generatePlayerArray);
-    $('#rules-button').on('click', displayRules);
-    $('#replay-button').on('click', replay)
+  $('ol.keyboard').on("click", userChoice);
+  $('#start-button').on('click', generatePlayerArray);
+  $('#rules-button').on('click', displayRules);
+  $('.game-screen').on('click', '#replay-button', function(){
+    clear();
+    generatePlayerArray();
+  })
+}
 
- // populate the keyboard with the emoji array
- $.each(emojis, populateKeyboard);
-
- function setupScreen(){
+function setupScreen(){
   $('.game-screen').prepend(
     '<ol class="rules">' +
-      '<li>Press play to begin</li>' +
-      '<li>Remember the order of the emojis</li>' +
-      '<li>Get the new high score!</li>' +
+    '<li>Press play to begin</li>' +
+    '<li>Remember the order of the emojis</li>' +
+    '<li>Get the new high score!</li>' +
     '</ol>' +
     '<div class="play" id="start-button">Play</div>'
-    )
- }
+    ).hide().fadeIn();
+}
 
- function populateKeyboard(i, emoji){
+function populateKeyboard(i, emoji){
   $('ol.keyboard').prepend("<li class='emojis-icon' src="+emoji.src+" style='background-image:url("+emoji.src+");width:45px;height:45px;' id="+ emoji.value +">"+emoji.value+"</li>").hide().fadeIn();
 }
 
@@ -82,32 +88,41 @@ function displayRules(){
 
 function generatePlayerArray(){
   clearScreen();
-  $('#start-button').toggle();
-  $('li.blank-button').toggle();
-
-  var nextEmoji = emojis[Math.floor(Math.random()*emojis.length)];
-  gameArrayObjects.push(nextEmoji);
-  gameArray.push(parseInt(nextEmoji.value));
-  populateScreen();
+  if (roundNumber === 3){
+    var emoji1 = emojis[Math.floor(Math.random()*emojis.length)];
+    var emoji2 = emojis[Math.floor(Math.random()*emojis.length)];
+    var emoji3 = emojis[Math.floor(Math.random()*emojis.length)];
+    gameArrayObjects.push(emoji1);
+    gameArray.push(parseInt(emoji1.value));
+    gameArrayObjects.push(emoji2);
+    gameArray.push(parseInt(emoji2.value));
+    gameArrayObjects.push(emoji3);
+    gameArray.push(parseInt(emoji3.value));
+    populateScreen();
+  } else {
+    var nextEmoji = emojis[Math.floor(Math.random()*emojis.length)];
+    gameArrayObjects.push(nextEmoji);
+    gameArray.push(parseInt(nextEmoji.value));
+    populateScreen();
+  }
 }
 
 //populate the screeen with a random emoji object.
 function populateScreen(){  
- finished = false;
+  finished = false;
+  var counter = -1;
 
- var counter = -1;
-
- var timer = setInterval(function(element) {
-  counter ++;
-  if(counter < roundNumber){
-
-    $('.game-screen').css("background-image", "url("+gameArrayObjects[counter].src).hide().fadeIn()+")";
-  }else{
-    finished = true;
-    clearScreenToGuess();
-    clearInterval(timer);
-  }
-}, 1000);
+  var timer = setInterval(function(element) {
+    counter ++;
+    if (counter < roundNumber) {
+      console.log(gameArrayObjects[counter])
+      $('.game-screen').css("background-image", "url("+gameArrayObjects[counter].src).hide().fadeIn()+")";
+    } else {
+      finished = true;
+      clearScreenToGuess();
+      clearInterval(timer);
+    }
+  }, 1000);
 };
 
 
@@ -123,19 +138,19 @@ function clearScreen(){
 }
 
 function gameOverScreen(){
-
-
   $('.game-screen').html( "<ol class='game-over'>"+"<li id='replay-button'>Replay</li>"+"<liid='score'>Score: "+score+"</li></ol>");
-  $('#replay-button').on('click', replay)
   score = 0;
 }
 
-function replay(){
-  clearScreen();
-  gameStart();
-  console.log('working')
+function clear(){
+  playerArray = []; 
+  gameArray   = []; 
+  roundNumber = 3;   
+  score       = 0;
+  gameArrayObjects = [];       
+  finished = true;
+  setupScreen();  
 }
-
 
 function matchScreen(){
   $('.game-screen').css("background-image", "none");
@@ -157,6 +172,8 @@ function userChoice(element){
   var picLink = (emojis[(element.toElement.id)-1].src)
   var pic = emojis[(element.toElement.id)-1];
 
+  console.log(pic)
+
   playerArray.push(parseInt(element.toElement.id));
   console.log(playerArray);
 
@@ -165,13 +182,14 @@ function userChoice(element){
 
     $('.game-screen').css("background-image", "url("+picLink+")");
 
-    $('ol.player-selection-bar').prepend("<li class='emojis-icon' src="+pic.src+" style='background-image:url("+pic.src+");width:45px;height:45px;' id="+ pic.value +">"+pic.value+"</li>");
+    $('ol.player-selection-bar').prepend("<li class='emojis-icon' src="+pic.src+" style='background-image:url("+pic.src+");width:45px;height:45px;' id="+ pic.value +">"+pic.value+"</li>")
     console.log(pic)
   } else {
     clearScreen();
     $('.game-screen').css("background-image", "url("+picLink+")");
 
     $('ol.player-selection-bar').prepend("<li class='emojis-icon' src="+pic.src+" style='background-image:url("+pic.src+");width:45px;height:45px;' id="+ pic.value +">"+pic.value+"</li>");
+
     setTimeout(clearAndCheckMatch, 800)
     function clearAndCheckMatch() {     
       clearScreen();
@@ -199,8 +217,7 @@ function checkMatch(){
       matchScreen();
 
     }else{
-      roundNumber =0;
-      // counter = 0;
+      roundNumber =3;
       playerArray=[];
       gameArrayString=[];
       gameArray = [];
@@ -209,17 +226,3 @@ function checkMatch(){
     }
   };
 };
-};
-});
-
-
-
-
-
-
-
-
-
-
-
-

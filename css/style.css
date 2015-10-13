@@ -29,10 +29,6 @@ ul.keyboard {
   border: 1px solid white; /* Make all the borders same, the middle ones were doubles up*/
 }
 
-ol#start-button {
-  background: red;
-  color: black;
-}
 
 .keyboard li, 
 ol.player-selection-bar li {
@@ -48,39 +44,130 @@ ol.player-selection-bar li {
   background-repeat: no-repeat;
 }
 
-/*li#start-button {
-  background-image: url(../emojis/go.png);
-  color: black;
-  font-size: 10px;
+.game-screen {
+  margin: 0 auto;
+  width: 320px;
+  height: 150px; /*150px*/
+  line-height: 105px;
+  overflow: hidden; /* Because we used float left, good practice to clear outside container so it doesnt affect it */
+  border: 1px solid white; /* Make all the borders same, the middle ones were doubles up*/
+  text-align: center;
+  font-size: 35px;
+  padding: 44px 0;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-li#rules-button {
-  background-image: url(../emojis/rules.png);
-  color: black;
-  font-size: 10px;
+.outer-screen {
+  position: relative;
 }
 
-li#difficulty-button {
-  background-image: url(../emojis/difficulty.png);
-  color: black;
-  font-size: 10px;
+.rules {
+  display: none;
+  font-size: 15px;
+  text-align: left;
 }
-li.blank-button {
-  background: white;
-  color: black;
-  }*/
+
+.game-over ol{
+  display: none;
+  font-size: 15px;
+  text-align: left;
+}
+
+.game-over li {
+  height: 34px;
+}
+
+.rules li {
+  height: 34px;
+}
+
+ul.player-selection-bar {
+  display: block;
+  overflow: hidden;
+}
+
+ol.player-selection-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 320px;
+  height:44px;
+  margin:0 auto;
+  overflow: hidden;
+}
+
+
+
+#start-button:hover { 
+  opacity: 0.4;
+}
+
+li:hover {
+  opacity: 0.4;
+}
+#score:hover {
+  opacity: 1;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : portrait) { 
+
+  body {
+    width: 330px;
+    height: 308px;
+  }
+
+  .container {
+    margin: 100%;
+    margin: 0 auto;
+  }
+
+  h1 {
+    color:black;
+    text-align: center;
+    height: 50px;
+    font-family: manga;
+    font-size: 45px;
+    width:100%;
+  }
+
+  ul.keyboard {
+    margin: 0 auto;
+    width: 100%;
+    height: 235px;
+    background-color: white;
+    overflow: hidden; /* Because we used float left, good practice to clear outside container so it doesnt affect it */
+    border: 1px solid white; /* Make all the borders same, the middle ones were doubles up*/
+  }
+
+
+  .keyboard li, 
+  ol.player-selection-bar li {
+    width: 44px; 
+    height: 44px;
+    float: right;
+    border: 1px solid white;
+    text-align: center;
+    line-height: 98px;
+    font-size: 8px;
+    color: white; 
+    background-size: 44px 44px;
+    background-repeat: no-repeat;
+  }
 
   .game-screen {
     margin: 0 auto;
-    width: 320px;
-    height: 150px; /*150px*/
+    width: 100%;
+    height: 120px;
     line-height: 105px;
     overflow: hidden; /* Because we used float left, good practice to clear outside container so it doesnt affect it */
     border: 1px solid white; /* Make all the borders same, the middle ones were doubles up*/
     text-align: center;
-    font-size: 35px; /*20px*/
-    padding: 44px 0;
-    background-color: white;
+    font-size: 35px;
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -119,21 +206,13 @@ li.blank-button {
     top: 0;
     left: 0;
     right: 0;
-    width: 320px;
+    width: 100%;
     height:44px;
     margin:0 auto;
     overflow: hidden;
   }
 
-/*ol.player-selection-bar {
-  width: 44px;
-  height: 44px;
-  float: left;
-  margin: 0;
-  padding: 0;
-  }*/
-
-  div#start-button.play :hover { 
+  #start-button:hover { 
     opacity: 0.4;
   }
 
@@ -143,3 +222,4 @@ li.blank-button {
   #score:hover {
     opacity: 1;
   }
+}
