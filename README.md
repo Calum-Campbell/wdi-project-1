@@ -24,9 +24,11 @@ Initially the game has a list of 3 Emoji's to remember, however this list increa
 
 4. If the player correctly repeats the list the game will move on to the next round. The next round will repeat the initial 3 Emojis plus another randomly selected Emoji.
 
+![alt text](./screen-shots/screen-4.png )
+
 5. The game continues until the player incorrectly guesses the list. 
 
-![alt text](./screen-shots/screen-4.png )
+![alt text](./screen-shots/screen-5.png )
 
 
 
