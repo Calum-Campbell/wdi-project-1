@@ -2,6 +2,7 @@
 //NEED TO DO -
 // back to start/replay button
 // styling
+// 7 along top memory thing
 
 var emojis = [
 {name: "one", value:1, src: "./emojis/1.png"},
@@ -51,13 +52,25 @@ $(function(){
     var gameArrayObjects = [];       
     var finished = true;    
 
-
+    setupScreen();
     $('ol.keyboard').on("click", userChoice);
     $('#start-button').on('click', generatePlayerArray);
     $('#rules-button').on('click', displayRules);
+    $('#replay-button').on('click', replay)
 
  // populate the keyboard with the emoji array
  $.each(emojis, populateKeyboard);
+
+ function setupScreen(){
+  $('.game-screen').prepend(
+    '<ol class="rules">' +
+      '<li>Press play to begin</li>' +
+      '<li>Remember the order of the emojis</li>' +
+      '<li>Get the new high score!</li>' +
+    '</ol>' +
+    '<div class="play" id="start-button">Play</div>'
+    )
+ }
 
  function populateKeyboard(i, emoji){
   $('ol.keyboard').prepend("<li class='emojis-icon' src="+emoji.src+" style='background-image:url("+emoji.src+");width:45px;height:45px;' id="+ emoji.value +">"+emoji.value+"</li>").hide().fadeIn();
@@ -113,8 +126,16 @@ function gameOverScreen(){
 
 
   $('.game-screen').html( "<ol class='game-over'>"+"<li id='replay-button'>Replay</li>"+"<liid='score'>Score: "+score+"</li></ol>");
+  $('#replay-button').on('click', replay)
   score = 0;
 }
+
+function replay(){
+  clearScreen();
+  gameStart();
+  console.log('working')
+}
+
 
 function matchScreen(){
   $('.game-screen').css("background-image", "none");
@@ -137,6 +158,7 @@ function userChoice(element){
   var pic = emojis[(element.toElement.id)-1];
 
   playerArray.push(parseInt(element.toElement.id));
+  console.log(playerArray);
 
   if (playerArray.length !== gameArray.length){
     clearScreen();
@@ -144,6 +166,7 @@ function userChoice(element){
     $('.game-screen').css("background-image", "url("+picLink+")");
 
     $('ol.player-selection-bar').prepend("<li class='emojis-icon' src="+pic.src+" style='background-image:url("+pic.src+");width:45px;height:45px;' id="+ pic.value +">"+pic.value+"</li>");
+    console.log(pic)
   } else {
     clearScreen();
     $('.game-screen').css("background-image", "url("+picLink+")");
@@ -158,7 +181,7 @@ function userChoice(element){
 };
 
 function clearPlayerSelection(){
- $('ol.player-selection-bar').empty();
+ $('ol.player-selection-bar').html('');
 }
 
 function checkMatch(){
@@ -177,7 +200,7 @@ function checkMatch(){
 
     }else{
       roundNumber =0;
-      counter = 0;
+      // counter = 0;
       playerArray=[];
       gameArrayString=[];
       gameArray = [];
