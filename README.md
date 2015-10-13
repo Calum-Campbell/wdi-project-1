@@ -9,10 +9,11 @@ Initially the game has a list of 3 Emoji's to remember, however this list increa
 
 [Test your ability here!](https://peaceful-savannah-3782.herokuapp.com/)
 
-![alt text](./screen-shots/main-screen.png )
 
 ### Game Play
 1. The user begins the game by selecting the 'Play' button on the main home screen.
+
+![alt text](./screen-shots/main-screen.png )
 
 2. The first list will be 3 Emoji's long. Each Emoji will display for 1 second.
 
@@ -30,7 +31,9 @@ Initially the game has a list of 3 Emoji's to remember, however this list increa
 
 ![alt text](./screen-shots/screen-5.png )
 
+##Approach / how it works
 
+When a player chooses to play the game, initially a random array f 
 
 
 

@@ -1,10 +1,4 @@
-//Prep - psuedo code, order of build etc why did game
-//technical demonstration
 
-
-//NEED TO DO -
-// back to start/replay button
-// styling
 // 7 along top memory thing
 
 var emojis = [
@@ -45,17 +39,16 @@ var emojis = [
 {name: "twentyfive", value:35, src:"./emojis/35.png"}];
 
 var playerArray,
-    gameArray,
-    roundNumber,
-    score,
-    gameArrayObjects,
-    finished;
+gameArray,
+roundNumber,
+score,
+gameArrayObjects,
+finished;
 
 $(gameStart);
-  
+
 function gameStart(){
   clear();
-  // populate the keyboard with the emoji array
   $.each(emojis, populateKeyboard);
 
   $('ol.keyboard').on("click", userChoice);
@@ -92,22 +85,24 @@ function generatePlayerArray(){
     var emoji1 = emojis[Math.floor(Math.random()*emojis.length)];
     var emoji2 = emojis[Math.floor(Math.random()*emojis.length)];
     var emoji3 = emojis[Math.floor(Math.random()*emojis.length)];
-    gameArrayObjects.push(emoji1);
-    gameArray.push(parseInt(emoji1.value));
-    gameArrayObjects.push(emoji2);
-    gameArray.push(parseInt(emoji2.value));
-    gameArrayObjects.push(emoji3);
-    gameArray.push(parseInt(emoji3.value));
-    populateScreen();
-  } else {
-    var nextEmoji = emojis[Math.floor(Math.random()*emojis.length)];
-    gameArrayObjects.push(nextEmoji);
-    gameArray.push(parseInt(nextEmoji.value));
-    populateScreen();
-  }
-}
 
-//populate the screeen with a random emoji object.
+   
+      gameArrayObjects.push(emoji1);
+      gameArrayObjects.push(emoji2);
+      gameArrayObjects.push(emoji3);
+      gameArray.push(parseInt((emoji1).value));
+      gameArray.push(parseInt((emoji2).value));
+      gameArray.push(parseInt((emoji3).value));
+
+      populateScreen();
+    } else {
+      var nextEmoji = emojis[Math.floor(Math.random()*emojis.length)];
+      gameArrayObjects.push(nextEmoji);
+      gameArray.push(parseInt(nextEmoji.value));
+      populateScreen();
+    }
+  }
+
 function populateScreen(){  
   finished = false;
   var counter = -1;
@@ -163,7 +158,6 @@ function matchScreen(){
   }
 }
 
-//make array of user choices
 function userChoice(element){
   event.preventDefault();
   if(!finished) return false;
@@ -175,7 +169,6 @@ function userChoice(element){
   console.log(pic)
 
   playerArray.push(parseInt(element.toElement.id));
-  console.log(playerArray);
 
   if (playerArray.length !== gameArray.length){
     clearScreen();
